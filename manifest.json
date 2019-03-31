@@ -3,17 +3,18 @@
 
 	"name": "Case No Getter",
 	"version": "1.0",
-	
+	"description": "Get case number from URL",
+
 	"browser_action": {
 		"default_popup": "popup.html"
 	},
-	
+
 	"background": {
 		"scripts" : ["jquery-3.1.0.min.js", "background.js"],
 		"persistent" : false
 	},
 
 	"permissions": ["http://*/*", "https://*/*", "activeTab", "tabs", "clipboardRead"],
-	
+
 	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
