@@ -4,7 +4,7 @@ const txt_msg = "クリップボードにコピーします。Ctrl+vで貼り付
 $('#btn-u').onclick = function(){
 	chrome.tabs.getSelected(null,function(tab) {
 	    const strUrl = tab.url
-	    const caseNum = strUrl.match(/questions\/(\d+)\//)[1]
+	    const caseNum = strUrl.match(/jobs=(\d+)/)[1]
 	    const msgStr = `お問い合わせ番号は【${caseNum}】でございます。`
 	    document.getElementById("res").innerHTML = txt_msg +  msgStr
 	    chrome.runtime.sendMessage({
