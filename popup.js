@@ -3,7 +3,13 @@ $(function(){
 	const TXT_FAIL = "あいにく、情報を取得できませんでした"
 	const txt_clip = "下記をクリップボードにコピーしました。Ctrl+vで貼り付けることができます \n==========\n"
 	const txt_over90 = "\nチャットが混み合っており、大変お待たせをしておりますことお詫び申し上げます。"
-	const txt_open2 = `いつもFacebook広告をご利用頂きましてありがとうございます。\nFacebookカスタマーサービスの西岡と申します。よろしくお願いいたします。`
+	const txt_open2 = `いつもFacebook広告をご利用頂きましてありがとうございます。`
+	let agentName = ''
+	chrome.storage.sync.get('agentName', function(option){
+		if(option.agentName){
+			agentName = option.agentName
+		}
+	})
 
 	$('#btn-case-info').click(function(){
 			getCaseNumUrl()
@@ -15,6 +21,9 @@ $(function(){
 		const caseNum = $('#case-num').val()
 		if((cusName.length > 0) && (caseNum.length > 0)){
 			let txt_opening = `${cusName}様、`+ getGreeting() + txt_open2
+			if(agentName){
+				txt_opening += `Facebookカスタマーサービスの${agentName}と申します。よろしくお願いいたします。`
+			}
 			if(document.getElementById("check90").checked){
 				txt_opening += txt_over90
 			}
