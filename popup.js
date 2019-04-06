@@ -14,7 +14,7 @@ $(function(){
 		const cusName = $('#cus-name').val()
 		const caseNum = $('#case-num').val()
 		if((cusName.length > 0) && (caseNum.length > 0)){
-			let txt_opening = `${cusName}さま、`+ getGreeting() + txt_open2
+			let txt_opening = `${cusName}様、`+ getGreeting() + txt_open2
 			if(document.getElementById("check90").checked){
 				txt_opening += txt_over90
 			}
@@ -41,19 +41,16 @@ $(function(){
 			function(tabs){
 				chrome.tabs.sendMessage(tabs[0].id, 'hi', function(res){
 					if(res){
-						$('#cus-name').val(res.cusName)
-						$('#email').val(res.email)
-						$('#aid').val(res.aid)
-						$('#pol-aid').val(res.aid)
-						$('#bid').val(res.bid)
-						$('#uid').val(res.uid)
+						$('#cus-name').val(res.cusName.trim())
+						$('#email').val(res.email.trim())
+						$('#aid').val(res.aid.trim())
+						$('#bid').val(res.bid.trim())
+						$('#uid').val(res.uid.trim())
 						const tier = res.tier
 						if(tier == "Managed GSO"){
 							$("input[name=tier][value='GSO']").prop('checked', true)
-							setVariableEach('tier', 'GSO')
 						}else{
 							$("input[name=tier][value='SMB']").prop('checked', true)
-							setVariableEach('tier', 'SMB')
 						}
 					}else{
 						alert(TXT_FAIL)

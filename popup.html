@@ -19,7 +19,6 @@
 <body>
 <div class="container">
 	<button type="button" id="btn-case-info" class="btn btn-danger">Get Case Info</button>
-	<button type="button" id="btn-save" class="btn btn-info">Save Case Info</button>
 	<div class="form-group row">
     <div class="col">
 			<input type="text" class="form-control" id="case-num" placeholder="Case Number">
@@ -30,8 +29,12 @@
   </div>
 	<div class="form-group row">
 		<div class="form-check col">
-			<input type="checkbox" class="form-check-input" id="check90">
-			<label for="check90" class="form-check-label">90秒以上: </label>
+			<div class="col">
+				<input type="checkbox" class="form-check-input" id="check90">
+			</div>
+			<div class="col">
+				<label for="check90" class="form-check-label">90秒以上: </label>
+			</div>
 		</div>
 		<div class="col">
 			<button type="button" id="btn-opening" class="btn btn-primary">Opening Spiel</button>
@@ -44,16 +47,36 @@
     </div>
   </div>
 	<div class="form-group row">
-		<div class="col">
+		<label for="aid" class="col col-form-label">Ad Account ID:</label>
+    <div class="col">
 			<input type="text" id="aid" class="form-control" placeholder="Ad Account ID">
-		</div>
-		<div class="col">
+    </div>
+  </div>
+	<div class="form-group row">
+		<label for="bid" class="col col-form-label">Business ID:</label>
+    <div class="col">
 			<input type="text" id="bid" class="form-control" placeholder="Business ID">
-		</div>
-		<div class="col">
+    </div>
+  </div>
+	<div class="form-group row">
+		<label for="uid" class="col col-form-label">User ID:</label>
+    <div class="col">
 			<input type="text" id="uid" class="form-control" placeholder="User ID">
+    </div>
+  </div>
+	<fieldset class="form-group">
+		<div class="row">
+			<legend class="col-form-label col-2 pt-0">Tier</legend>
+				<div class="col-10">
+					<div class="form-check">
+						<input name="tier" id="tier_GSO" value="GSO" type="radio" class="form-check-input">GSO
+					</div>
+					<div class="form-check">
+							<input name="tier" id="tier_SMB" value="SMB" type="radio" class="form-check-input">SMB/ME
+					</div>
+				</div>
 		</div>
-	</div>
+	</fieldset>
 </div><!-- closing for class container -->
 <script src="jquery-3.1.0.min.js"></script>
 <script src="/js/bootstrap.js"></script>
