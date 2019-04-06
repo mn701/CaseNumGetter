@@ -5,6 +5,7 @@ $(function(){
 	const txt_over90 = "\nチャットが混み合っており、大変お待たせをしておりますことお詫び申し上げます。"
 	const txt_open2 = `いつもFacebook広告をご利用頂きましてありがとうございます。\nFacebookカスタマーサービスの西岡と申します。よろしくお願いいたします。`
 
+<<<<<<< HEAD
 	$('#btn-case-info').click(function(){
 			getCaseNumUrl()
 			getTabElements()
