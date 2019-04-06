@@ -2,25 +2,61 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Get Case No</title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./styles.css">
+	<title></title>
 	<style>
-		button {
-			background-color: #66cdaa;  
-			width: 200px;               
-			height:40px;               
-			margin: 0 auto;            
-			border-radius: 3px;
-			color: #ffffff;
-			display: inline-block;
-			text-align: center;
-			text-decoration: none;
-			padding: 10px 0;
+		html, body{
+			font-family:  'Open Sans', sans-serif;
+			font-size: 14px;
+			margin:0;
+			min-height: 180px;
+			padding: 0;
+			width: 400px;
 		}
 	</style>
 </head>
 <body>
-	<button type="button" id="btn-u">お問い合わせ番号を取得</button>
-	<div id="res"></div>
-	<script src="popup.js" defer></script>
+<div class="container">
+	<button type="button" id="btn-case-info" class="btn btn-danger">Get Case Info</button>
+	<button type="button" id="btn-save" class="btn btn-info">Save Case Info</button>
+	<div class="form-group row">
+    <div class="col">
+			<input type="text" class="form-control" id="case-num" placeholder="Case Number">
+    </div>
+		<div class="col">
+			<input type="text" id="cus-name" class="form-control" placeholder="Customer Name">
+    </div>
+  </div>
+	<div class="form-group row">
+		<div class="form-check col">
+			<input type="checkbox" class="form-check-input" id="check90">
+			<label for="check90" class="form-check-label">90秒以上: </label>
+		</div>
+		<div class="col">
+			<button type="button" id="btn-opening" class="btn btn-primary">Opening Spiel</button>
+		</div>
+	</div>
+	<div class="form-group row">
+		<label for="email" class="col-3 col-form-label">Email:</label>
+    <div class="col-9">
+			<input type="text" id="email" class="form-control">
+    </div>
+  </div>
+	<div class="form-group row">
+		<div class="col">
+			<input type="text" id="aid" class="form-control" placeholder="Ad Account ID">
+		</div>
+		<div class="col">
+			<input type="text" id="bid" class="form-control" placeholder="Business ID">
+		</div>
+		<div class="col">
+			<input type="text" id="uid" class="form-control" placeholder="User ID">
+		</div>
+	</div>
+</div><!-- closing for class container -->
+<script src="jquery-3.1.0.min.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="popup.js" defer></script>
 </body>
 </html>
