@@ -2,12 +2,19 @@
 <html>
     <head>
         <title>Opening Spiel Options</title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
     </head>
     <body>
-        <h1>Opening Spiel Options</h1>
-        <h2>Agent Name: <input id="agent-name" type="text"></h2>
-        <input id="saveName" type="submit" value="Save Name"/>
+        <div class="container">
+          <h2>Opening Spiel Options</h2>
+          <div class="col-6 form-group">
+            <label for="agent-name" class="col-form-label">Your Name:</label>
+            <input class="form-control" id="agent-name" type="text" placeholder="Name">
+          </div>
+          <button type="button" id="saveName" class="btn btn-primary">Save Name</button>
+        </div>
         <script src="jquery-3.1.0.min.js"></script>
+        <script src="./js/bootstrap.js"></script>
         <script src="options.js"></script>
     </body>
 </html>
