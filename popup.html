@@ -3,22 +3,25 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
-	<link rel="stylesheet" href="./styles.css">
 	<title></title>
 	<style>
 		html, body{
 			font-family:  'Open Sans', sans-serif;
-			font-size: 14px;
+			font-size: 12px;
 			margin:0;
 			min-height: 180px;
 			padding: 0;
-			width: 400px;
+			width: 350px;
+		}
+		#err{
+			font-size: 10px;
 		}
 	</style>
 </head>
 <body>
 <div class="container">
 	<button type="button" id="btn-case-info" class="btn btn-danger">Get Case Info</button>
+	<div id="err"></div>
 	<div class="form-group row">
     <div class="col">
 			<input type="text" class="form-control" id="case-num" placeholder="Case Number">
@@ -33,7 +36,7 @@
 				<input type="checkbox" class="form-check-input" id="check90">
 			</div>
 			<div class="col">
-				<label for="check90" class="form-check-label">90秒以上: </label>
+				<label for="check90" class="form-check-label">90秒以上</label>
 			</div>
 		</div>
 		<div class="col">

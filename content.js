@@ -1,4 +1,5 @@
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  console.log(request)
   const strNameSpan = $('div[data-testid="gms_three_pane_header_name"]').find('span').text()
   const cusName = strNameSpan.match(/\((.+?)\)/)[1]
   const email = $('._4ytq:contains("Email")').siblings('._4ytr').find('._2lj1').text()

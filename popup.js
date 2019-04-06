@@ -1,6 +1,7 @@
 $(function(){
 	const TXT_UNKNOWN = "不明です"
 	const TXT_FAIL = "あいにく、情報を取得できませんでした"
+	const TXT_ENTER_NAME = "アイコンを右クリックして[Options]から名前をセットしてください"
 	const txt_clip = "下記をクリップボードにコピーしました。Ctrl+vで貼り付けることができます \n==========\n"
 	const txt_over90 = "\nチャットが混み合っており、大変お待たせをしておりますことお詫び申し上げます。"
 	const txt_open2 = `いつもFacebook広告をご利用頂きましてありがとうございます。`
@@ -8,6 +9,8 @@ $(function(){
 	chrome.storage.sync.get('agentName', function(option){
 		if(option.agentName){
 			agentName = option.agentName
+		}else{
+			$('#err').text(TXT_ENTER_NAME)
 		}
 	})
 
@@ -62,7 +65,7 @@ $(function(){
 							$("input[name=tier][value='SMB']").prop('checked', true)
 						}
 					}else{
-						alert(TXT_FAIL)
+						$('#err').text(TXT_FAIL)
 					}
 				})
 			}
