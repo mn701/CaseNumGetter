@@ -1,7 +1,18 @@
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  console.log(request)
+  // alert(request)
   const strNameSpan = $('div[data-testid="gms_three_pane_header_name"]').find('span').text()
-  const cusName = strNameSpan.match(/\((.+?)\)/)[1]
+  let cusName
+  let myregex = /\((.+?)\)/
+  if(myregex.test(strNameSpan)){
+    cusName = strNameSpan.match(/\((.+?)\)/)[1]
+  }else{
+    myregex = /(.+?):/
+    if(myregex.test(strNameSpan)){
+      cusName = strNameSpan.match(myregex)[1]
+    }else{
+      cusName = 'unknown'
+    }
+  }
   const email = $('._4ytq:contains("Email")').siblings('._4ytr').find('._2lj1').text()
   const aid = $('._4ytq:contains("Ad Account ID")').siblings('._4ytr').find('._2lj1').text()
   const bid = $('._4ytq:contains("Business Manager ID")').siblings('._4ytr').find('._2lj1').text()
