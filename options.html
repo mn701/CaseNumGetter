@@ -3,20 +3,57 @@
     <head>
         <title>Opening Spiel Options</title>
         <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <meta http-equiv="content-type" charset="utf-8">
+        <style>
+			html, body{
+				margin:0;
+				min-height: 180px;
+				padding: 0;
+			}
+			#note{
+				padding: 0 20px;
+				font-size: 11px;
+			}
+			#sample-area {
+				padding: 30px 0;
+			}
+			.temp {
+				color: #CF5237;
+				font-weight: bold;
+			}
+		</style>
     </head>
     <body>
         <div class="container">
             <h2>Opening Spiel Options</h2>
-            <div class="col-6 form-group">
-                <label for="agent-name" class="col-form-label">Your Name:</label>
-                <input class="form-control" id="agent-name" type="text" placeholder="Name">
+            <div class="form-group">
+                <label for="spiel" class="col-form-label">Your Own Opening Spiel: </label><br/>
+                <div id="note">
+                	*Paste your own opening spiel here and replace template words with below:<br/>
+                	<span class="temp">{{cusName}}</span> : Customer's name such as "山田"<br/>
+                	<span class="temp">{{sla90}}</span>：Shows only when 90 sec checkbox is checked ※勝手に改行します！<br/>
+                	<span class="temp">{{caseNum}}</span>：Case  number such as "1234567891012345"<br/>
+                	<span class="temp">{{greeting}}</span>："おはようございます"　before 11am, "こんにちは" otherwise
+                </div>
+     
+                <textarea class="form-control" id="spiel" rows="8" 
+                placeholder="{{cusName}}様、{{greeting}}！いつもFacebook広告をご利用頂きましてありがとうございます。Facebookカスタマーサービスのなまえと申します。よろしくお願いいたします。{{sla90}}&#10;本件のお問い合わせ番号は{{caseNum}}でございます。&#10;本日はどういったお問い合わせでしょうか？"></textarea>
             </div>
-            <div class="col-6 form-group">
-                <label for="pre-msg" class="col-form-label">Message:</label>
-                <input class="form-control" id="pre-msg" type="text" placeholder="">
-                <input class="form-control" id="post-msg" type="text" placeholder="">
+            <div class="form-group">
+                <label for="sla90" class="col-form-label">Message when wait time is over 90 seconds:</label>
+                <textarea class="form-control" id="sla90" placeholder="チャットが混み合っており、大変お待たせをしておりますことお詫び申し上げます。"></textarea>
             </div>
-            <button type="submit" id="saveName" class="btn btn-primary">Save Name</button>
+            <button type="submit" id="saveName" class="btn btn-primary">Save Options</button>
+            <div id="sample-area">
+            	Sample spiel:
+            	<div class="form-check col">
+						<label for="check90" class="form-check-label">
+							<input type="checkbox" class="form-check-input" id="check90">
+							90秒以上
+						</label>
+				</div>
+            	<textarea class="form-control" disabled rows="3" id='sample'></textarea>
+            </div>
         </div>
         <script src="jquery-3.1.0.min.js"></script>
         <script src="./js/bootstrap.js"></script>
