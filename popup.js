@@ -1,16 +1,18 @@
 $(function(){
 	const TXT_UNKNOWN = "不明です"
 	const TXT_FAIL = "あいにく、情報を取得できませんでした"
-	const TXT_ENTER_NAME = "アイコンを右クリックして[Options]から名前をセットしてください"
+	const TXT_ENTER_NAME = "アイコンを右クリックして[Options]からメッセージをセットしてください"
 	const txt_clip = "下記をクリップボードにコピーしました。Ctrl+vで貼り付けることができます \n==========\n"
-	const txt_over90 = "\nチャットが混み合っており、大変お待たせをしておりますことお詫び申し上げます。"
-	const txt_open2 = `いつもFacebook広告をご利用頂きましてありがとうございます。`
-	let agentName = ''
-	chrome.storage.sync.get('agentName', function(option){
-		if(option.agentName){
-			agentName = option.agentName
+	let txt_over90 = "\nチャットが混み合っており、大変お待たせをしておりますことお詫び申し上げます。"
+	let spiel = ''
+	chrome.storage.sync.get(['spiel', 'sla90'], function(option){
+		if(option.spiel){
+			spiel = option.spiel
 		}else{
 			$('#err').text(TXT_ENTER_NAME)
+		}
+		if(option.sla90){
+			txt_over90 = "\n" + option.sla90
 		}
 	})
 
@@ -22,16 +24,17 @@ $(function(){
 	$('#btn-opening').click(function () {
 		const cusName = $('#cus-name').val()
 		const caseNum = $('#case-num').val()
+		const greeting = getGreeting()
+		const sla90 = document.getElementById("check90").checked? txt_over90:""
+
 		if((cusName.length > 0) && (caseNum.length > 0)){
-			let txt_opening = `${cusName}様、`+ getGreeting() + txt_open2
-			if(agentName){
-				txt_opening += `Facebookカスタマーサービスの${agentName}と申します。よろしくお願いいたします。`
-			}
-			if(document.getElementById("check90").checked){
-				txt_opening += txt_over90
-			}
-			txt_opening += `\n本件のお問い合わせ番号は${caseNum}でございます。\n本日はどういったお問い合わせでしょうか？`
-			showMsg(txt_opening)
+			let strMsg = spiel
+			    .replace(/{{cusName}}/g, cusName)
+			    .replace(/{{caseNum}}/g, caseNum)
+			    .replace(/{{greeting}}/g, greeting)
+				.replace(/{{sla90}}/g, sla90)
+
+			showMsg(strMsg)
 		}
 	})
 
@@ -85,9 +88,9 @@ $(function(){
 		const hours = today.getHours()
 		let greeting
 		if(hours<11){
-			greeting = "おはようございます。"
+			greeting = "おはようございます"
 		}else{
-			greeting = "こんにちは！"
+			greeting = "こんにちは"
 		}
 		return greeting
 	}
